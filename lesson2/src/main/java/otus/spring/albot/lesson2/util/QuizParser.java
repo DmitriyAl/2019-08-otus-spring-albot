@@ -1,12 +1,12 @@
-package otus.spring.albot.lesson1.util;
+package otus.spring.albot.lesson2.util;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
 import org.apache.log4j.Logger;
-import otus.spring.albot.lesson1.Main;
-import otus.spring.albot.lesson1.model.QuestionType;
-import otus.spring.albot.lesson1.model.ParsedLine;
+import otus.spring.albot.lesson2.Main;
+import otus.spring.albot.lesson2.model.ParsedLine;
+import otus.spring.albot.lesson2.model.QuestionType;
 
 import java.io.IOException;
 import java.io.InputStreamReader;

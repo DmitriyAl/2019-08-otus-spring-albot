@@ -1,7 +1,7 @@
-package otus.spring.albot.lesson1.util;
+package otus.spring.albot.lesson2.util;
 
-import otus.spring.albot.lesson1.model.QuestionType;
-import otus.spring.albot.lesson1.model.ParsedLine;
+import otus.spring.albot.lesson2.model.ParsedLine;
+import otus.spring.albot.lesson2.model.QuestionType;
 
 import java.util.Collections;
 import java.util.List;
