@@ -1,4 +1,4 @@
-package otus.spring.albot.lesson2.util;
+package otus.spring.albot.lesson2.util.message;
 
 import org.springframework.context.MessageSource;
 
@@ -14,7 +14,7 @@ import java.util.Locale;
  *
  * @author Dmitrii Albot
  */
-public class MessageHandler {
+public class MessageHandler implements IMessageHandler {
     private MessageSource messageSource;
     private Locale locale;
 

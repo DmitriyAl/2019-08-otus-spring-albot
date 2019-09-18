@@ -1,4 +1,4 @@
-package otus.spring.albot.lesson2.util;
+package otus.spring.albot.lesson2.util.question;
 
 import otus.spring.albot.lesson2.model.ParsedLine;
 import otus.spring.albot.lesson2.model.QuestionType;
@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * @author Dmitrii Albot
  */
-public class QuestionsPreparer {
+public class QuestionsPreparer implements IQuestionsPreparer {
     public List<ParsedLine> prepareQuestions(final List<ParsedLine> lines) {
         if (lines == null || lines.isEmpty()) {
             throw new IllegalArgumentException("List of questions is empty! Please specify the questions!");

@@ -3,9 +3,9 @@ package otus.spring.albot.lesson2;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import otus.spring.albot.lesson2.game.GameManager;
 import otus.spring.albot.lesson2.model.ParsedLine;
-import otus.spring.albot.lesson2.util.QuestionLocalizer;
-import otus.spring.albot.lesson2.util.QuestionsPreparer;
-import otus.spring.albot.lesson2.util.QuizParser;
+import otus.spring.albot.lesson2.util.question.QuestionLocalizer;
+import otus.spring.albot.lesson2.util.question.QuestionsPreparer;
+import otus.spring.albot.lesson2.util.question.QuizParser;
 
 import java.util.List;
 

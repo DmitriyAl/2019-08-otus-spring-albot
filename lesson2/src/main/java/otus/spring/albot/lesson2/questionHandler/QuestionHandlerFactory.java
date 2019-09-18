@@ -7,7 +7,7 @@ import otus.spring.albot.lesson2.model.QuestionType;
 /**
  * @author Dmitrii Albot
  */
-public class QuestionHandlerFactory {
+public class QuestionHandlerFactory implements IQuestionHandlerFactory {
     private QuestionHandler choiceQH;
     private QuestionHandler multChoiceQH;
     private QuestionHandler trueFalseQH;

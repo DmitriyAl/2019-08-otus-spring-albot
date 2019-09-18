@@ -3,9 +3,9 @@ package otus.spring.albot.lesson2.game;
 import otus.spring.albot.lesson2.exception.IncorrectAnswerException;
 import otus.spring.albot.lesson2.exception.QuestionTypeIsNotSupportedException;
 import otus.spring.albot.lesson2.model.ParsedLine;
+import otus.spring.albot.lesson2.questionHandler.IQuestionHandlerFactory;
 import otus.spring.albot.lesson2.questionHandler.QuestionHandler;
-import otus.spring.albot.lesson2.questionHandler.QuestionHandlerFactory;
-import otus.spring.albot.lesson2.util.MessageHandler;
+import otus.spring.albot.lesson2.util.message.IMessageHandler;
 
 import java.util.List;
 import java.util.Scanner;
@@ -13,10 +13,10 @@ import java.util.Scanner;
 /**
  * @author Dmitrii Albot
  */
-public class GameManager {
-    private QuestionHandlerFactory factory;
-    private MessageHandler messageHandler;
-    private Scanner scanner;
+public class GameManager implements IGameManager {
+    private final IQuestionHandlerFactory factory;
+    private final IMessageHandler messageHandler;
+    private final Scanner scanner;
     private String currentPlayer;
     private int counter;
     private int correctAnswers;
@@ -26,7 +26,7 @@ public class GameManager {
     private int amount;
 
     public GameManager(
-            QuestionHandlerFactory factory, MessageHandler messageHandler, String greetingKey, String rulesKey,
+            IQuestionHandlerFactory factory, IMessageHandler messageHandler, String greetingKey, String rulesKey,
             String resultKey, int amount) {
         this.factory = factory;
         this.messageHandler = messageHandler;

@@ -1,21 +1,20 @@
-package otus.spring.albot.lesson2.util;
+package otus.spring.albot.lesson2.util.question;
 
-import org.springframework.context.MessageSource;
 import otus.spring.albot.lesson2.model.ParsedLine;
+import otus.spring.albot.lesson2.util.message.IMessageHandler;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 /**
  * @author Dmitrii Albot
  */
-public class QuestionLocalizer {
-    private MessageHandler messageHandler;
+public class QuestionLocalizer implements IQuestionLocalizer{
+    private IMessageHandler messageHandler;
     private String open;
     private String close;
 
-    public QuestionLocalizer(MessageHandler messageHandler, String open, String close) {
+    public QuestionLocalizer(IMessageHandler messageHandler, String open, String close) {
         this.messageHandler = messageHandler;
         this.open = open;
         this.close = close;

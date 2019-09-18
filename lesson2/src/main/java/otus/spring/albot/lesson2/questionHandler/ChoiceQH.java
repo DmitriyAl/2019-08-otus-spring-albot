@@ -57,7 +57,7 @@ public class ChoiceQH extends QuestionHandler {
         }
         try {
             String value = question.getChoices().get(index);
-            return value.toLowerCase().equals(question.getAnswer());
+            return value.toLowerCase().equals(question.getAnswer().toLowerCase());
         } catch (IndexOutOfBoundsException ex) {
             throw new IncorrectAnswerException(errorMessage);
         }
