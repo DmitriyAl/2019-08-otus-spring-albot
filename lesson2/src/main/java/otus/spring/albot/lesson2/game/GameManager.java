@@ -2,9 +2,10 @@ package otus.spring.albot.lesson2.game;
 
 import otus.spring.albot.lesson2.exception.IncorrectAnswerException;
 import otus.spring.albot.lesson2.exception.QuestionTypeIsNotSupportedException;
-import otus.spring.albot.lesson2.handler.QuestionHandler;
-import otus.spring.albot.lesson2.handler.QuestionHandlerFactory;
 import otus.spring.albot.lesson2.model.ParsedLine;
+import otus.spring.albot.lesson2.questionHandler.QuestionHandler;
+import otus.spring.albot.lesson2.questionHandler.QuestionHandlerFactory;
+import otus.spring.albot.lesson2.util.MessageHandler;
 
 import java.util.List;
 import java.util.Scanner;
@@ -14,15 +15,26 @@ import java.util.Scanner;
  */
 public class GameManager {
     private QuestionHandlerFactory factory;
+    private MessageHandler messageHandler;
     private Scanner scanner;
     private String currentPlayer;
     private int counter;
     private int correctAnswers;
-    private int amount = 5;
+    private String greetingKey;
+    private String rulesKey;
+    private String resultKey;
+    private int amount;
 
-    public GameManager(QuestionHandlerFactory factory) {
+    public GameManager(
+            QuestionHandlerFactory factory, MessageHandler messageHandler, String greetingKey, String rulesKey,
+            String resultKey, int amount) {
         this.factory = factory;
+        this.messageHandler = messageHandler;
         this.scanner = new Scanner(System.in);
+        this.greetingKey = greetingKey;
+        this.rulesKey = rulesKey;
+        this.resultKey = resultKey;
+        this.amount = amount;
     }
 
     public void startGame(List<ParsedLine> questions) {
@@ -32,12 +44,9 @@ public class GameManager {
     }
 
     private void describeRules() {
-        System.out.println("Welcome to student quiz! Please enter your name");
+        System.out.println(messageHandler.getMessage(greetingKey));
         currentPlayer = scanner.next();
-        System.out
-                .printf("Ok, %s, you have to answer on %d questions. It could be the questions with a choice, " +
-                                "true/false questions or open questions. Good luck!\n",
-                        currentPlayer, amount);
+        System.out.println(messageHandler.getMessage(rulesKey, currentPlayer, String.valueOf(amount)));
     }
 
     private void askQuestions(List<ParsedLine> questions) {
@@ -79,7 +88,7 @@ public class GameManager {
     }
 
     private void showResults() {
-        System.out
-                .printf("%s, you correctly answered on %d from %d questions\n", currentPlayer, correctAnswers, counter);
+        System.out.println(messageHandler.getMessage(resultKey, currentPlayer, String.valueOf(correctAnswers),
+                                                     String.valueOf(counter)));
     }
 }

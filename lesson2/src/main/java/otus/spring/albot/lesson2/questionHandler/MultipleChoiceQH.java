@@ -1,4 +1,4 @@
-package otus.spring.albot.lesson2.handler;
+package otus.spring.albot.lesson2.questionHandler;
 
 /**
  * @author Dmitrii Albot
