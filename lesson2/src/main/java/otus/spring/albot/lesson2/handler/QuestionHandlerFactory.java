@@ -1,8 +1,8 @@
-package otus.spring.albot.lesson1.handler;
+package otus.spring.albot.lesson2.handler;
 
 import org.apache.log4j.Logger;
-import otus.spring.albot.lesson1.exception.QuestionTypeIsNotSupportedException;
-import otus.spring.albot.lesson1.model.QuestionType;
+import otus.spring.albot.lesson2.exception.QuestionTypeIsNotSupportedException;
+import otus.spring.albot.lesson2.model.QuestionType;
 
 /**
  * @author Dmitrii Albot
