@@ -1,6 +1,6 @@
-package otus.spring.albot.util.question;
+package otus.spring.albot.lesson2.game;
 
-import otus.spring.albot.model.ParsedLine;
+import otus.spring.albot.lesson2.model.ParsedLine;
 
 import java.util.List;
 
@@ -14,6 +14,6 @@ import java.util.List;
  *
  * @author Dmitrii Albot
  */
-public interface IQuizParser {
-    List<ParsedLine> parse();
+public interface GamePreparer {
+    List<ParsedLine> prepareQuestions();
 }

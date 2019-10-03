@@ -14,20 +14,8 @@ import java.util.Locale;
  *
  * @author Dmitrii Albot
  */
-public class MessageHandler implements IMessageHandler {
-    private MessageSource messageSource;
-    private Locale locale;
+public interface MessageHandler {
+    String getMessage(String key, String... params);
 
-    public MessageHandler(MessageSource messageSource, Locale locale) {
-        this.messageSource = messageSource;
-        this.locale = locale;
-    }
-
-    public String getMessage(String key, String... params) {
-        return messageSource.getMessage(key, params, locale);
-    }
-
-    public void setLocale(Locale locale) {
-        this.locale = locale;
-    }
+    void setLocale(Locale locale);
 }
