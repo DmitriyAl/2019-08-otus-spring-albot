@@ -2,6 +2,7 @@ package otus.spring.albot.entity;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -12,7 +13,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.util.List;
 
 /**
  * <pre>
@@ -25,6 +28,7 @@ import javax.persistence.Table;
  * @author Dmitrii Albot
  */
 @Data
+@ToString(exclude = "comments")
 @NoArgsConstructor
 @Entity
 @Table(name = "books")
@@ -40,4 +44,6 @@ public class Book {
     @ManyToOne(targetEntity = Genre.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "genre_id")
     private Genre genre;
+    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
+    private List<Comment> comments;
 }

@@ -2,6 +2,7 @@ package otus.spring.albot.entity;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,6 +25,7 @@ import java.util.List;
  * @author Dmitrii Albot
  */
 @Data
+@ToString(exclude = "books")
 @NoArgsConstructor
 @Entity
 @Table(name = "genres")

@@ -15,7 +15,11 @@ import java.util.List;
  * @author Dmitrii Albot
  */
 public interface BookDao {
+    Book findBookById(long id);
+
     List<Book> findAllBooks();
 
     List<Book> findBookByName(String template);
+
+    Book updateBook(Book book);
 }
