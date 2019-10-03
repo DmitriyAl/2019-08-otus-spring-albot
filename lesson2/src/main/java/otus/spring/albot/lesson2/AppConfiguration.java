@@ -8,18 +8,18 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import otus.spring.albot.lesson2.game.GameManagerImpl;
 import otus.spring.albot.lesson2.game.GameManager;
-import otus.spring.albot.lesson2.game.IGameManager;
-import otus.spring.albot.lesson2.questionHandler.IQuestionHandlerFactory;
 import otus.spring.albot.lesson2.questionHandler.QuestionHandlerFactory;
-import otus.spring.albot.lesson2.util.message.IMessageHandler;
+import otus.spring.albot.lesson2.questionHandler.QuestionHandlerFactoryImpl;
 import otus.spring.albot.lesson2.util.message.MessageHandler;
-import otus.spring.albot.lesson2.util.question.IQuestionLocalizer;
-import otus.spring.albot.lesson2.util.question.IQuestionsPreparer;
-import otus.spring.albot.lesson2.util.question.IQuizParser;
+import otus.spring.albot.lesson2.util.message.MessageHandlerImpl;
 import otus.spring.albot.lesson2.util.question.QuestionLocalizer;
 import otus.spring.albot.lesson2.util.question.QuestionsPreparer;
 import otus.spring.albot.lesson2.util.question.QuizParser;
+import otus.spring.albot.lesson2.util.question.QuestionLocalizerImpl;
+import otus.spring.albot.lesson2.util.question.QuestionsPreparerImpl;
+import otus.spring.albot.lesson2.util.question.QuizParserImpl;
 
 import java.util.Locale;
 
@@ -38,32 +38,32 @@ public class AppConfiguration {
     }
 
     @Bean
-    public IQuestionHandlerFactory questionHandlerFactory() {
-        return new QuestionHandlerFactory();
+    public QuestionHandlerFactory questionHandlerFactory() {
+        return new QuestionHandlerFactoryImpl();
     }
 
     @Bean
-    public IQuestionsPreparer questionsPreparer() {
-        return new QuestionsPreparer();
+    public QuestionsPreparer questionsPreparer() {
+        return new QuestionsPreparerImpl();
     }
 
     @Bean
-    public IQuizParser csvParser(@Value("${path.questions}") String path) {
-        return new QuizParser(path);
+    public QuizParser csvParser(@Value("${path.questions}") String path) {
+        return new QuizParserImpl(path);
     }
 
     @Bean
-    public IGameManager gameManager(
-            IQuestionHandlerFactory factory, IMessageHandler messageHandler, @Value("${game.greeting}") String greeting,
+    public GameManager gameManager(
+            QuestionHandlerFactory factory, MessageHandler messageHandler, @Value("${game.greeting}") String greeting,
             @Value("${game.rules}") String rules, @Value("${game.amount}") int amount,
             @Value("${game.result}") String result) {
-        return new GameManager(factory, messageHandler, greeting, rules, result, amount);
+        return new GameManagerImpl(factory, messageHandler, greeting, rules, result, amount);
     }
 
     @Bean
-    public IQuestionLocalizer getLocalizer(
-            IMessageHandler handler, @Value("${pattern.open}") String open, @Value("${pattern.close}") String close) {
-        return new QuestionLocalizer(handler, open, close);
+    public QuestionLocalizer getLocalizer(
+            MessageHandler handler, @Value("${pattern.open}") String open, @Value("${pattern.close}") String close) {
+        return new QuestionLocalizerImpl(handler, open, close);
     }
 
     @Bean
@@ -76,8 +76,8 @@ public class AppConfiguration {
     }
 
     @Bean
-    public IMessageHandler messageHandler(
+    public MessageHandler messageHandler(
             MessageSource messageSource, @Value("${localization.language}") String languageTag) {
-        return new MessageHandler(messageSource, Locale.forLanguageTag(languageTag));
+        return new MessageHandlerImpl(messageSource, Locale.forLanguageTag(languageTag));
     }
 }

@@ -1,1 +1,0 @@
-The multi choice question type is not supported up for now
