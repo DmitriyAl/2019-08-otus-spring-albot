@@ -1,25 +1,19 @@
 package otus.spring.albot.lesson2.util.question;
 
 import otus.spring.albot.lesson2.model.ParsedLine;
-import otus.spring.albot.lesson2.model.QuestionType;
 
-import java.util.Collections;
 import java.util.List;
 
 /**
+ * <pre>
+ * $Id: $
+ * $LastChangedBy: $
+ * $LastChangedRevision: $
+ * $LastChangedDate: $
+ * </pre>
+ *
  * @author Dmitrii Albot
  */
-public class QuestionsPreparer implements IQuestionsPreparer {
-    public List<ParsedLine> prepareQuestions(final List<ParsedLine> lines) {
-        if (lines == null || lines.isEmpty()) {
-            throw new IllegalArgumentException("List of questions is empty! Please specify the questions!");
-        }
-        for (ParsedLine line : lines) {
-            if (line.getType().equals(QuestionType.C) && line.getChoices() != null) {
-                Collections.shuffle(line.getChoices());
-            }
-        }
-        Collections.shuffle(lines);
-        return lines;
-    }
+public interface QuestionsPreparer {
+    List<ParsedLine> prepareQuestions(final List<ParsedLine> lines);
 }

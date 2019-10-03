@@ -1,10 +1,5 @@
 package otus.spring.albot.util.message;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.MessageSource;
-import org.springframework.stereotype.Service;
-
 import java.util.Locale;
 
 /**
@@ -17,22 +12,8 @@ import java.util.Locale;
  *
  * @author Dmitrii Albot
  */
-@Service
-public class MessageHandler implements IMessageHandler {
-    private MessageSource messageSource;
-    private Locale locale;
+public interface MessageHandler {
+    String getMessage(String key, String... params);
 
-    @Autowired
-    public MessageHandler(MessageSource messageSource, @Value("${localization.language}") String languageTag) {
-        this.messageSource = messageSource;
-        this.locale = Locale.forLanguageTag(languageTag);
-    }
-
-    public String getMessage(String key, String... params) {
-        return messageSource.getMessage(key, params, locale);
-    }
-
-    public void setLocale(Locale locale) {
-        this.locale = locale;
-    }
+    void setLocale(Locale locale);
 }
