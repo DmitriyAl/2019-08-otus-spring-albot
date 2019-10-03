@@ -14,6 +14,7 @@ import java.util.Scanner;
  * @author Dmitrii Albot
  */
 public class GameManagerImpl implements GameManager {
+    private final GamePreparer gamePreparer;
     private final QuestionHandlerFactory factory;
     private final MessageHandler messageHandler;
     private final Scanner scanner;
@@ -25,9 +26,10 @@ public class GameManagerImpl implements GameManager {
     private String resultKey;
     private int amount;
 
-    public GameManagerImpl(
+    public GameManagerImpl(GamePreparer gamePreparer,
             QuestionHandlerFactory factory, MessageHandler messageHandler, String greetingKey, String rulesKey,
             String resultKey, int amount) {
+        this.gamePreparer = gamePreparer;
         this.factory = factory;
         this.messageHandler = messageHandler;
         this.scanner = new Scanner(System.in);
@@ -37,7 +39,11 @@ public class GameManagerImpl implements GameManager {
         this.amount = amount;
     }
 
-    public void startGame(List<ParsedLine> questions) {
+    public void launch() {
+        startGame(gamePreparer.prepareQuestions());
+    }
+
+    private void startGame(List<ParsedLine> questions) {
         describeRules();
         askQuestions(questions);
         showResults();

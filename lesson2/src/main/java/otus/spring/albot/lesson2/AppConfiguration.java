@@ -10,6 +10,8 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import otus.spring.albot.lesson2.game.GameManagerImpl;
 import otus.spring.albot.lesson2.game.GameManager;
+import otus.spring.albot.lesson2.game.GamePreparer;
+import otus.spring.albot.lesson2.game.GamePreparerImpl;
 import otus.spring.albot.lesson2.questionHandler.QuestionHandlerFactory;
 import otus.spring.albot.lesson2.questionHandler.QuestionHandlerFactoryImpl;
 import otus.spring.albot.lesson2.util.message.MessageHandler;
@@ -53,11 +55,17 @@ public class AppConfiguration {
     }
 
     @Bean
+    public GamePreparer gamePreparer(
+            QuizParser quizParser, QuestionsPreparer questionsPreparer, QuestionLocalizer localizer) {
+        return new GamePreparerImpl(quizParser, questionsPreparer, localizer);
+    }
+
+    @Bean
     public GameManager gameManager(
-            QuestionHandlerFactory factory, MessageHandler messageHandler, @Value("${game.greeting}") String greeting,
-            @Value("${game.rules}") String rules, @Value("${game.amount}") int amount,
-            @Value("${game.result}") String result) {
-        return new GameManagerImpl(factory, messageHandler, greeting, rules, result, amount);
+            GamePreparer gamePreparer, QuestionHandlerFactory factory, MessageHandler messageHandler,
+            @Value("${game.greeting}") String greeting, @Value("${game.rules}") String rules,
+            @Value("${game.amount}") int amount, @Value("${game.result}") String result) {
+        return new GameManagerImpl(gamePreparer, factory, messageHandler, greeting, rules, result, amount);
     }
 
     @Bean
