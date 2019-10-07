@@ -1,4 +1,4 @@
-package otus.spring.albot.lesson2.util;
+package otus.spring.albot.lesson2.util.question;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
@@ -16,11 +16,11 @@ import java.util.List;
 /**
  * @author Dmitrii Albot
  */
-public class QuizParser {
+public class QuizParserImpl implements QuizParser {
     private String fileName;
-    private static final Logger LOG = Logger.getLogger(QuizParser.class);
+    private static final Logger LOG = Logger.getLogger(QuizParserImpl.class);
 
-    public QuizParser(String fileName) {
+    public QuizParserImpl(String fileName) {
         this.fileName = fileName;
     }
 

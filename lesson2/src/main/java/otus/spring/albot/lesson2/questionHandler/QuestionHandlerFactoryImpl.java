@@ -1,4 +1,4 @@
-package otus.spring.albot.lesson2.handler;
+package otus.spring.albot.lesson2.questionHandler;
 
 import org.apache.log4j.Logger;
 import otus.spring.albot.lesson2.exception.QuestionTypeIsNotSupportedException;
@@ -7,12 +7,12 @@ import otus.spring.albot.lesson2.model.QuestionType;
 /**
  * @author Dmitrii Albot
  */
-public class QuestionHandlerFactory {
+public class QuestionHandlerFactoryImpl implements QuestionHandlerFactory {
     private QuestionHandler choiceQH;
     private QuestionHandler multChoiceQH;
     private QuestionHandler trueFalseQH;
     private QuestionHandler commonQH;
-    private static final Logger LOG = Logger.getLogger(QuestionHandlerFactory.class);
+    private static final Logger LOG = Logger.getLogger(QuestionHandlerFactoryImpl.class);
 
     public QuestionHandler getHandler(QuestionType type) throws QuestionTypeIsNotSupportedException {
         switch (type) {

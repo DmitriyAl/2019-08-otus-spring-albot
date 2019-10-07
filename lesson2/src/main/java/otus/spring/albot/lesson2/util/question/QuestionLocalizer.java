@@ -1,4 +1,4 @@
-package otus.spring.albot.lesson2.game;
+package otus.spring.albot.lesson2.util.question;
 
 import otus.spring.albot.lesson2.model.ParsedLine;
 
@@ -14,6 +14,6 @@ import java.util.List;
  *
  * @author Dmitrii Albot
  */
-public interface GameManager {
-    void launch();
+public interface QuestionLocalizer {
+    void localizeQuestions(List<ParsedLine> parsedLines);
 }

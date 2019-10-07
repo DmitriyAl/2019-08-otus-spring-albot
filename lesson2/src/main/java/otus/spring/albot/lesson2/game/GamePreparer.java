@@ -14,6 +14,6 @@ import java.util.List;
  *
  * @author Dmitrii Albot
  */
-public interface GameManager {
-    void launch();
+public interface GamePreparer {
+    List<ParsedLine> prepareQuestions();
 }

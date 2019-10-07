@@ -1,4 +1,4 @@
-package otus.spring.albot.lesson2.handler;
+package otus.spring.albot.lesson2.questionHandler;
 
 import otus.spring.albot.lesson2.exception.IncorrectAnswerException;
 import otus.spring.albot.lesson2.model.ParsedLine;
@@ -57,7 +57,7 @@ public class ChoiceQH extends QuestionHandler {
         }
         try {
             String value = question.getChoices().get(index);
-            return value.toLowerCase().equals(question.getAnswer());
+            return value.toLowerCase().equals(question.getAnswer().toLowerCase());
         } catch (IndexOutOfBoundsException ex) {
             throw new IncorrectAnswerException(errorMessage);
         }

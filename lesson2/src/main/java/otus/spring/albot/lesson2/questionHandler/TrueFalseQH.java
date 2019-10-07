@@ -1,4 +1,4 @@
-package otus.spring.albot.lesson2.handler;
+package otus.spring.albot.lesson2.questionHandler;
 
 import otus.spring.albot.lesson2.exception.IncorrectAnswerException;
 import otus.spring.albot.lesson2.model.ParsedLine;
