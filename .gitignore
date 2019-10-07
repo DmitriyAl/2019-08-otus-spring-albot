@@ -3,5 +3,6 @@
 */target
 *.iml
 */spring-shell.log
-*/mvnw.cmd
-*/mvnw
+.mvn
+mvnw.cmd
+mvnw
