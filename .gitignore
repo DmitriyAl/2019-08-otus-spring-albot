@@ -2,7 +2,8 @@
 .idea
 */target
 *.iml
-*/spring-shell.log
 .mvn
 mvnw.cmd
 mvnw
+spring-shell.log
+log.txt
