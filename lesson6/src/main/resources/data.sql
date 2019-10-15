@@ -1,12 +1,12 @@
-INSERT INTO AUTHORS VALUES (1, 'Alexander Pushkin');
-INSERT INTO AUTHORS VALUES (2, 'Leo Tolstoy');
-INSERT INTO AUTHORS VALUES (3, 'Nikolai Gogol');
+INSERT INTO AUTHORS (name) VALUES ('Alexander Pushkin');
+INSERT INTO AUTHORS (name) VALUES ('Leo Tolstoy');
+INSERT INTO AUTHORS (name) VALUES ('Nikolai Gogol');
 
-INSERT INTO BOOKS VALUES (1, 'Death souls');
-INSERT INTO BOOKS VALUES (2, 'War and pease');
-INSERT INTO BOOKS VALUES (3, 'The story about the fisherman and the golden fish');
-INSERT INTO BOOKS VALUES (4, 'Evgeniy Onegin');
+INSERT INTO BOOKS (name) VALUES ('Death souls');
+INSERT INTO BOOKS (name) VALUES ('War and peace');
+INSERT INTO BOOKS (name) VALUES ('The story about the fisherman and the golden fish');
+INSERT INTO BOOKS (name) VALUES ('Evgeniy Onegin');
 
-INSERT INTO GENRES VALUES (1, 'Satire');
-INSERT INTO GENRES VALUES (2, 'Novel');
-INSERT INTO GENRES VALUES (3, 'Fairytale');
+INSERT INTO GENRES (name) VALUES ('Satire');
+INSERT INTO GENRES (name) VALUES ('Novel');
+INSERT INTO GENRES (name) VALUES ('Fairytale');

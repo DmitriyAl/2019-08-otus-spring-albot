@@ -39,4 +39,18 @@ public class BookRepoImpl implements BookRepo {
     public List<Book> findAllBooks() {
         return jdbc.query("SELECT b.id, b.name FROM books b", new BookMapper());
     }
+
+    @Override
+    public int saveBook(String name) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("name", name);
+        return jdbc.update("insert into books (name) values (:name)", params);
+    }
+
+    @Override
+    public int deleteBook(long id) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("id", id);
+        return jdbc.update("delete from books where id=:id", params);
+    }
 }
