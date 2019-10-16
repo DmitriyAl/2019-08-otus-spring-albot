@@ -44,7 +44,14 @@ public class BookDaoImpl implements BookDao {
 
     @Override
     @Transactional
-    public Book updateBook(Book book) {
-        return em.merge(book);
+    public void addNewBook(Book book) {
+        em.persist(book);
+    }
+
+    @Override
+    @Transactional
+    public void deleteBook(long id) {
+        Book book = em.find(Book.class, id);
+        em.remove(book);
     }
 }

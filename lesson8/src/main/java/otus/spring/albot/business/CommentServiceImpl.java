@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import otus.spring.albot.dao.BookDao;
+import otus.spring.albot.dao.CommentDao;
 import otus.spring.albot.entity.Book;
 import otus.spring.albot.entity.Comment;
 
@@ -19,21 +20,22 @@ import otus.spring.albot.entity.Comment;
  */
 @Service
 @AllArgsConstructor
-public class CommentAddingServiceImpl implements CommentAddingService {
+public class CommentServiceImpl implements CommentService {
     private BookDao bookDao;
+    private CommentDao commentDao;
 
     @Override
     @Transactional
-    public Book addCommentToBook(long bookId, String textComment) {
-        Book toReturn = null;
+    public Comment addCommentToBook(long bookId, String textComment) {
         Book book = bookDao.findBookById(bookId);
-        if (book != null) {
-            Comment comment = new Comment();
-            comment.setComment(textComment);
-            comment.setBook(book);
-            book.getComments().add(comment);
-            toReturn = bookDao.updateBook(book);
-        }
-        return toReturn;
+        Comment comment = new Comment(textComment, book);
+        commentDao.addNewComment(comment);
+        return comment;
+    }
+
+    @Override
+    @Transactional
+    public void removeComment(long id) {
+        commentDao.removeCommentById(id);
     }
 }

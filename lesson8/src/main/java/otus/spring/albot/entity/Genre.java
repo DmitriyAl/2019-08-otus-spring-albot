@@ -25,7 +25,6 @@ import java.util.List;
  * @author Dmitrii Albot
  */
 @Data
-@ToString(exclude = "books")
 @NoArgsConstructor
 @Entity
 @Table(name = "genres")
@@ -35,6 +34,8 @@ public class Genre {
     private long id;
     @Column(name = "name")
     private String name;
-    @OneToMany(mappedBy = "genre", fetch = FetchType.LAZY)
-    private List<Book> books;
+
+    public Genre(String name) {
+        this.name = name;
+    }
 }

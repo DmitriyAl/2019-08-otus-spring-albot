@@ -37,4 +37,9 @@ public class Comment {
     @ManyToOne(targetEntity = Book.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "book_id")
     private Book book;
+
+    public Comment(String comment, Book book) {
+        this.comment = comment;
+        this.book = book;
+    }
 }

@@ -15,6 +15,6 @@ import java.util.List;
  * @author Dmitrii Albot
  */
 public interface BookCommentPreparer {
-    List<BookComments> extractAllCommentsForBookById(long id);
+    BookComments extractAllCommentsForBookById(long id);
     List<BookComments> extractAllCommentsForBookByTemplate(String template);
 }
