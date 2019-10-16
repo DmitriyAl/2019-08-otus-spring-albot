@@ -18,4 +18,8 @@ public interface GenreRepo {
     List<Genre> findAllGenres();
 
     List<Genre> findAllGenresByName(String name);
+
+    int saveGenre(String name);
+
+    int deleteGenre(long id);
 }

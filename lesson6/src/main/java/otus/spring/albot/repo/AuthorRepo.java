@@ -16,5 +16,10 @@ import java.util.List;
  */
 public interface AuthorRepo {
     List<Author> findAllAuthors();
+
     List<Author> findAuthorByName(String name);
+
+    int saveAuthor(String name);
+
+    int deleteAuthor(long id);
 }

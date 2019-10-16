@@ -17,4 +17,6 @@ import java.util.List;
 public interface BookRepo {
     List<Book> findAllBooks();
     List<Book> findBookByName(String name);
+    int saveBook(String name);
+    int deleteBook(long id);
 }

@@ -39,4 +39,18 @@ public class GenreRepoImpl implements GenreRepo {
     public List<Genre> findAllGenres() {
         return jdbc.query("SELECT g.id, g.name FROM genres g", new GenreMapper());
     }
+
+    @Override
+    public int saveGenre(String name) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("name", name);
+        return jdbc.update("insert into genres (name) values (:name)", params);
+    }
+
+    @Override
+    public int deleteGenre(long id) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("id", id);
+        return jdbc.update("delete from genres where id=:id", params);
+    }
 }
