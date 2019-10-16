@@ -8,9 +8,7 @@ import otus.spring.albot.entity.Comment;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * <pre>
@@ -32,8 +30,7 @@ public class CommentDaoImpl implements CommentDao {
     @Override
     @Transactional
     public List<Comment> getCommentsForBook(Book book) {
-        return em.createQuery("select c from Comment c where c.book = :book", Comment.class)
-                .setParameter("book", book).getResultList();
+        return em.createQuery("select c from Comment c where c.book = :book", Comment.class).setParameter("book", book).getResultList();
     }
 
     @Override

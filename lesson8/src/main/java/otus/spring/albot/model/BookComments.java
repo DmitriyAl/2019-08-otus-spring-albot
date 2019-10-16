@@ -2,7 +2,6 @@ package otus.spring.albot.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import otus.spring.albot.entity.Book;
 import otus.spring.albot.entity.Comment;
 
 import java.util.List;

@@ -1,6 +1,5 @@
 package otus.spring.albot.business;
 
-import otus.spring.albot.entity.Book;
 import otus.spring.albot.entity.Comment;
 
 /**
@@ -15,5 +14,6 @@ import otus.spring.albot.entity.Comment;
  */
 public interface CommentService {
     Comment addCommentToBook(long bookId, String comment);
+
     void removeComment(long id);
 }

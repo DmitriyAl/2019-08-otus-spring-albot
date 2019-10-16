@@ -3,13 +3,9 @@ package otus.spring.albot.dao;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.jdbc.JdbcTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit4.SpringRunner;
-import otus.spring.albot.entity.Author;
-
-import javax.persistence.EntityManager;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -38,7 +34,7 @@ public class AuthorDaoImplTest {
 
     @Test
     public void findAuthorByName() throws Exception {
-        assertThat(authorDao.findAuthorByName("sh")).hasSize(1).allMatch(author -> author.getName() != null)
+        assertThat(authorDao.findAuthorByTemplate("sh")).hasSize(1).allMatch(author -> author.getName() != null)
                 .allMatch(author -> author.getName().equals("Alexander Pushkin"));
     }
 }

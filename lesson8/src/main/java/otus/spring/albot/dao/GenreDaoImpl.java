@@ -30,8 +30,7 @@ public class GenreDaoImpl implements GenreDao {
 
     @Override
     public List<Genre> findAllGenresByName(String template) {
-        return em.createQuery("select g from Genre g where g.name like :template")
-                .setParameter("template", "%" + template + "%").getResultList();
+        return em.createQuery("select g from Genre g where g.name like :template").setParameter("template", "%" + template + "%").getResultList();
     }
 
     @Override
