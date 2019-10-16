@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/lesson6
+    driverClassName: org.postgresql.Driver
+    username: dalbot
+    password: imagemaster
+    initialization-mode: always
+
+logging:
+  level:
+    org:
+      springframework:
+        jdbc:
+          core:
+            JdbcTemplate: error
