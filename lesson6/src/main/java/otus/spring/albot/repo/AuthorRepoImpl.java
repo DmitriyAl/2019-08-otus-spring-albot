@@ -1,8 +1,10 @@
 package otus.spring.albot.repo;
 
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcOperations;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
+import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Repository;
 import otus.spring.albot.entity.Author;
 import otus.spring.albot.repo.mapper.AuthorMapper;
@@ -36,5 +38,19 @@ public class AuthorRepoImpl implements AuthorRepo {
         Map<String, Object> params = new HashMap<>();
         params.put("name", "%" + name + "%");
         return jdbc.query("SELECT a.id, a.name FROM authors a WHERE a.name LIKE :name", params, new AuthorMapper());
+    }
+
+    @Override
+    public int saveAuthor(@NonNull String name) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("name", name);
+        return jdbc.update("insert into authors (name) values (:name)", params);
+    }
+
+    @Override
+    public int deleteAuthor(long id) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("id", id);
+        return jdbc.update("delete from authors where id=:id", params);
     }
 }
