@@ -21,5 +21,7 @@ public interface BookDao {
 
     List<Book> findBookByName(String template);
 
-    Book updateBook(Book book);
+    void addNewBook(Book book);
+
+    void deleteBook(long id);
 }

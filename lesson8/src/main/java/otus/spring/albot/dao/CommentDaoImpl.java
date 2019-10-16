@@ -28,15 +28,30 @@ import java.util.stream.Collectors;
 public class CommentDaoImpl implements CommentDao {
     @PersistenceContext
     private EntityManager em;
-    private BookDao bookDao;
 
     @Override
     @Transactional
-    public List<String> getCommentsForBook(long bookId) {
-        Book book = bookDao.findBookById(bookId);
-        if (book != null) {
-            return book.getComments().stream().map(Comment::getComment).collect(Collectors.toList());
-        }
-        return Collections.emptyList();
+    public List<Comment> getCommentsForBook(Book book) {
+        return em.createQuery("select c from Comment c where c.book = :book", Comment.class)
+                .setParameter("book", book).getResultList();
+    }
+
+    @Override
+    @Transactional
+    public void addNewComment(Comment comment) {
+        em.persist(comment);
+    }
+
+    @Override
+    @Transactional
+    public Comment getCommentById(long id) {
+        return em.find(Comment.class, id);
+    }
+
+    @Override
+    @Transactional
+    public void removeCommentById(long id) {
+        Comment comment = em.find(Comment.class, id);
+        em.remove(comment);
     }
 }

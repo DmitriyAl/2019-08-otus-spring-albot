@@ -28,7 +28,6 @@ import java.util.List;
  * @author Dmitrii Albot
  */
 @Data
-@ToString(exclude = "comments")
 @NoArgsConstructor
 @Entity
 @Table(name = "books")
@@ -38,12 +37,16 @@ public class Book {
     private long id;
     @Column(name = "name")
     private String name;
-    @ManyToOne(targetEntity = Author.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(targetEntity = Author.class, cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinColumn(name = "author_id")
     private Author author;
-    @ManyToOne(targetEntity = Genre.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(targetEntity = Genre.class, cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinColumn(name = "genre_id")
     private Genre genre;
-    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
-    private List<Comment> comments;
+
+    public Book(String name, Author author, Genre genre) {
+        this.name = name;
+        this.author = author;
+        this.genre = genre;
+    }
 }
