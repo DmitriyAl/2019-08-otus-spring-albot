@@ -38,8 +38,7 @@ public class BookDaoImpl implements BookDao {
     @Override
     @Transactional
     public List<Book> findBookByName(String template) {
-        return em.createQuery("select b from Book b where b.name like :template")
-                .setParameter("template", "%" + template + "%").getResultList();
+        return em.createQuery("select b from Book b where b.name like :template").setParameter("template", "%" + template + "%").getResultList();
     }
 
     @Override

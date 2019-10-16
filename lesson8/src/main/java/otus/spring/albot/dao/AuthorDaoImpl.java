@@ -29,9 +29,8 @@ public class AuthorDaoImpl implements AuthorDao {
     }
 
     @Override
-    public List<Author> findAuthorByName(String template) {
-        return em.createQuery("select a from Author a where a.name like :template")
-                .setParameter("template", "%" + template + "%").getResultList();
+    public List<Author> findAuthorByTemplate(String template) {
+        return em.createQuery("select a from Author a where a.name like :template").setParameter("template", "%" + template + "%").getResultList();
     }
 
     @Override

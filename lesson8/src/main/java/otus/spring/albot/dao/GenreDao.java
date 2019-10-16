@@ -16,8 +16,12 @@ import java.util.List;
  */
 public interface GenreDao {
     List<Genre> findAllGenres();
+
     List<Genre> findAllGenresByName(String template);
+
     Genre findById(long id);
+
     void addNewGenre(String name);
+
     void deleteGenre(long id);
 }

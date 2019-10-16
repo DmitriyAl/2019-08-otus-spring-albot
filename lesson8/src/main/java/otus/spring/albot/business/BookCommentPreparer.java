@@ -16,5 +16,6 @@ import java.util.List;
  */
 public interface BookCommentPreparer {
     BookComments extractAllCommentsForBookById(long id);
+
     List<BookComments> extractAllCommentsForBookByTemplate(String template);
 }
