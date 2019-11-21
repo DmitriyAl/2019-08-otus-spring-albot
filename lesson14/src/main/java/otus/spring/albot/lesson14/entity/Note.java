@@ -11,7 +11,7 @@ import javax.persistence.*;
 public class Note {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     @Lob
     @Type(type = "org.hibernate.type.TextType")
     private String comment;
@@ -20,4 +20,6 @@ public class Note {
     private Product product;
     @Column(name = "rate")
     private int rate;
+
+
 }

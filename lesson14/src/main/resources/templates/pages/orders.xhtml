@@ -8,12 +8,15 @@
 <body>
 <div th:insert="header :: nav"/>
 <div class="container">
-    <input type="button" th:value="#{orders.newOrder}"/>
-    <ul>
-        <li th:each="order : ${orders}">
-            <a th:href="@{/orders/__${order.id}__}" th:text="#{orderList(${order.id})}">link</a>
-        </li>
-    </ul>
+    <form th:action="@{/orders/remove}" method="post">
+        <ul>
+            <li th:each="order, iter : ${orders}">
+                <a th:href="@{/orders/__${order.id}__}" th:text="#{orderList(${order.id})}">link</a>
+                <input th:id="'orderToDelete' + ${iter.index}" type="checkbox" name="orderToDelete" th:value="${order.id}"/>
+            </li>
+        </ul>
+        <input type="submit" th:value="#{orders.removeOrders}"/>
+    </form>
 </div>
 <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
 <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>

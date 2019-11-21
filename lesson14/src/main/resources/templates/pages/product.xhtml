@@ -9,12 +9,27 @@
 <div th:insert="header :: nav"/>
 <div class="container">
     <h3 th:text="#{productHeader(${product.name})}">Product test</h3>
-    <ul>
-        <li th:each="note : ${product.notes}" th:text="${note.comment}">Note</li>
-    </ul>
+    <a th:href="@{/product/edit(id=${product.id})}" th:value="#{product.edit}">Edit product</a>
+    <a th:href="@{/product/delete(id=${product.id})}" th:value="#{product.delete}">Delete product</a>
+    <form th:action="@{/products/__${product.id}__}" method="post">
+        <ul>
+            <li th:each="note : ${product.notes}">
+                <span th:text="${note.comment}">Note</span>
+                <input type="submit" th:onclick="'deleteNote(' + ${note.id} + ')'" th:value="#{product.removeNote}"/>
+            </li>
+        </ul>
+        <input id="noteToDelete" name="noteToDelete" type="hidden"/>
+    </form>
+    <form th:action="@{/products/addNote}" method="post">
+        <label for="commentArea" th:value="#{product.addCommentLabel}"/>
+        <textarea id="commentArea" name="comment"></textarea>
+        <input type="hidden" name="productId" th:value="*{id}"/>
+        <input type="submit" th:value="#{product.submit}"/>
+    </form>
 </div>
 <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
 <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
 <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/product.js}"></script>
 </body>
 </html>
