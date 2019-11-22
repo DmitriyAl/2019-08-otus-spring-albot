@@ -3,12 +3,12 @@
 <head>
     <title>Title</title>
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css} "/>
-    <link rel="stylesheet" th:href="@{/css/styles.css} "/>
+    <link rel="stylesheet" th:href="@{/static/css/styles.css} "/>
 </head>
 <body>
-<div th:insert="header :: nav"/>
+<div th:insert="header :: div"/>
 <div class="container">
-    <a th:href="@{/products/addNew}" th:value="#{products.addNew}">Add new product</a>
+    <a th:href="@{/products/addNew}" th:text="#{products.addNew}">Add new product</a>
     <form th:action="@{/orders/addToOrder}" method="post">
         <div class="card-deck product-list">
             <div th:each="product, iter : ${products}" class="card col-4 p-0">

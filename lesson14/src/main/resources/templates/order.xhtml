@@ -6,10 +6,10 @@
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css} "/>
 </head>
 <body>
-<div th:insert="header :: nav"/>
+<div th:insert="header :: div"/>
 <div class="container">
     <h3 th:text="#{orderList(${order.id})}">Order number 1</h3>
-    <a th:href="@{/order/remove(id=${order.id})}" th:value="#{order.delete}">Delete order</a>
+    <a th:href="@{/order/remove(id=${order.id})}" th:text="#{order.delete}">Delete order</a>
     <form th:action="@{/order/modify}" method="post">
         <input type="hidden" name="orderId" th:value="${order.id}"/>
         <input type="submit" th:value="#{order.modify}"/>

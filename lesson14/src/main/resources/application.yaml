@@ -1,7 +1,7 @@
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/lesson14
-    driverClassName: org.postgresql.Driver
+    driver-class-name: org.postgresql.Driver
     username: dalbot
     password: imagemaster
     initialization-mode: always

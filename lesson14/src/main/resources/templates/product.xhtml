@@ -6,11 +6,11 @@
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css} "/>
 </head>
 <body>
-<div th:insert="header :: nav"/>
+<div th:insert="header :: div"/>
 <div class="container">
     <h3 th:text="#{productHeader(${product.name})}">Product test</h3>
-    <a th:href="@{/product/edit(id=${product.id})}" th:value="#{product.edit}">Edit product</a>
-    <a th:href="@{/product/delete(id=${product.id})}" th:value="#{product.delete}">Delete product</a>
+    <a th:href="@{/product/edit(id=${product.id})}" th:text="#{product.edit}">Edit product</a>
+    <a th:href="@{/product/delete(id=${product.id})}" th:text="#{product.delete}">Delete product</a>
     <form th:action="@{/products/__${product.id}__}" method="post">
         <ul>
             <li th:each="note : ${product.notes}">

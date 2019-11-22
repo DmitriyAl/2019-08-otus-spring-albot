@@ -20,13 +20,13 @@ public class ProductController {
     @GetMapping(value = "products")
     public String productList(Model model) {
         model.addAttribute("products", productService.getAllProducts());
-        return "pages/products";
+        return "products";
     }
 
     @GetMapping(value = "products/{id}")
     public String product(@PathVariable("id") Long id, Model model) {
         model.addAttribute("product", productService.getProductById(id));
-        return "pages/product";
+        return "product";
     }
 
     @PostMapping(value = "products/addNote")
@@ -44,13 +44,13 @@ public class ProductController {
     @GetMapping(value = "products/addNew")
     public String addProduct(Model model) {
         model.addAttribute("product", new Product());
-        return "pages/productDetails";
+        return "productDetails";
     }
 
     @GetMapping(value = "product/edit")
     public String editProduct(@RequestParam("id") Long id, Model model) {
         model.addAttribute("product", productService.getProductById(id));
-        return "pages/productDetails";
+        return "productDetails";
     }
 
     @GetMapping(value = "product/delete")

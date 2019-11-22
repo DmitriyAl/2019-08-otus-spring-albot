@@ -21,14 +21,14 @@ public class OrderController {
     @GetMapping(value = {"", "orders"})
     public String welcomePage(Model model) {
         model.addAttribute("orders", orderService.getAllOrders());
-        return "pages/orders";
+        return "orders";
     }
 
     @GetMapping(value = "orders/{id}")
     public String order(@PathVariable("id") Long id, Model model) {
         Order orderById = orderService.getOrderById(id);
         model.addAttribute("order", orderById);
-        return "pages/order";
+        return "order";
     }
 
     @PostMapping(value = "orders/remove")
@@ -49,7 +49,7 @@ public class OrderController {
     public String addToOrder(@RequestParam(value = "productId", required = false) List<Long> productIds, @RequestParam(value = "orderId", required = false) Long orderId, Model model) {
         Order order = orderService.modifyOrder(orderId, productIds);
         model.addAttribute("order", order);
-        return "pages/order";
+        return "order";
     }
 
     @PostMapping(value = "order/modify")
